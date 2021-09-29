@@ -25,6 +25,12 @@
       </article>
     <?php } ?>
   </div>
+  <style>
+    .card-body {
+      margin-top: 100px;
+      min-height: 100vh;
+    }
+  </style>
   <?php include('includes/footer.php') ?>
 </body>
 </html>

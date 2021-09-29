@@ -5,6 +5,7 @@ define('__ROOT__', realpath(dirname(__FILE__, 2)));
 
 require(__ROOT__ . '/class/Post.php');
 require(__ROOT__ . '/class/User.php');
+require(__ROOT__ . '/class/Comments.php');
 
 /**
  * Get all content of database

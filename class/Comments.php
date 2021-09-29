@@ -8,7 +8,7 @@
 class Comments {
   // Properties
   public $content;
-  public $author_id;
+  public $author;
   public $post_id;
   public $created_at;
   public $updated_at;
@@ -18,8 +18,8 @@ class Comments {
     $this->content = $content;
   }
 
-  function setAuthorId($id){
-    $this->author_id = $id;
+  function setAuthor($username){
+    $this->author = $username;
   }
 
   function setPostId($id){
@@ -39,7 +39,7 @@ class Comments {
   }
 
   function getAuthor(){
-    return $this->author_id;
+    return $this->author;
   }
 
   function getPostId(){

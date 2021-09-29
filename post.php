@@ -66,6 +66,7 @@
     <div class="back">
       <a class="btn btn-primary" href="index.php">Back to home</a>
       <a class="btn btn-warning" href="postUpdate.php?id=<?= $_GET['id'] ?>">Update post</a>
+      <a class="btn btn-danger" href="core/deletePost.php?id=<?= $_GET['id'] ?>">Delete post</a>
     </div>
     <figure class="mb-0">
       <img src="<?= $post['img'] ?>" alt="<?= $post['title'] ?>">

@@ -58,25 +58,31 @@
       bottom: 10px;
       left: 45px
     }
+    .card-body {
+      margin-top: 100px;
+      min-height: 100vh;
+    }
   </style>
 </head>
 <body>
   <?php include('includes/header.php') ?>
-  <div class="img">
-    <div class="back">
-      <a class="btn btn-primary" href="index.php">Back to home</a>
-      <a class="btn btn-warning" href="postUpdate.php?id=<?= $_GET['id'] ?>">Update post</a>
-      <a class="btn btn-danger" href="core/deletePost.php?id=<?= $_GET['id'] ?>">Delete post</a>
+  <div class="card-body">
+    <div class="img">
+      <div class="back">
+        <a class="btn btn-primary" href="index.php">Back to home</a>
+        <a class="btn btn-warning" href="postUpdate.php?id=<?= $_GET['id'] ?>">Update post</a>
+        <a class="btn btn-danger" href="core/deletePost.php?id=<?= $_GET['id'] ?>">Delete post</a>
+      </div>
+      <figure class="mb-0">
+        <img src="<?= $post['img'] ?>" alt="<?= $post['title'] ?>">
+      </figure>
+      <h1 class="post-title text-white"><?= $post['title'] ?></h1>
     </div>
-    <figure class="mb-0">
-      <img src="<?= $post['img'] ?>" alt="<?= $post['title'] ?>">
-    </figure>
-    <h1 class="post-title text-white"><?= $post['title'] ?></h1>
+    <article class="px-4 py-3 mx-4 shadow rounded-bottom">
+      <p class="text-muted">By <a href="#"><?= $post['author'] ?></a> | <?= date('d M Y H:i', $post['created_at']) ?></p>
+      <p><?= $post['content'] ?></p>
+    </article>
   </div>
-  <article class="px-4 py-3 mx-4 shadow rounded-bottom">
-    <p class="text-muted">By <a href="#"><?= $post['author'] ?></a> | <?= date('d M Y H:i', $post['created_at']) ?></p>
-    <p><?= $post['content'] ?></p>
-  </article>
   <?php include('includes/footer.php') ?>
 </body>
 </html>

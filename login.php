@@ -23,6 +23,12 @@
       <button class="btn btn-success m-auto" name="submit">Sign in</button>
     </form>
   </div>
+  <style>
+    .card-body {
+      margin-top: 100px;
+      min-height: 100vh;
+    }
+  </style>
   <?php include('includes/footer.php') ?>
 </body>
 </html>

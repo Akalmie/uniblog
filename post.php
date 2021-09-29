@@ -14,6 +14,25 @@
     header('Location: index.php');
     exit;
   }
+  if (!empty ($_POST)){
+    $ContErr = ''; 
+    if (isset($_POST['submit']) && empty($_POST['content']) ){
+      $ContErr = "Write Something";
+    }
+    $date = date_create();
+    $created_at = date_timestamp_get($date);
+    $updated_at = date_timestamp_get($date);
+  
+    $comments = new Comments();
+    $comments->setContent($_POST['content']);
+    $comments->setAuthor($_SESSION["user"]);
+    $comments->setPostId($_GET["id"]);
+    $comments->setCreatedAt($created_at);
+    $comments->setUpdatedAt($updated_at);  
+    add_content($comments, "comments");
+    header('Location: post.php?id=' .$_GET['id']);
+  }  
+  $comments = get_content('comments');
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -83,6 +102,27 @@
       <p><?= $post['content'] ?></p>
     </article>
   </div>
+  <article class="px-4 py-3 mx-4 shadow rounded-bottom">
+    <p class="text-muted">By <a href="#"><?= $post['author'] ?></a> | <?= date('d M Y H:i', $post['created_at']) ?></p>
+    <p><?= $post['content'] ?></p>
+    <form class="row g-3 needs-validation" novalidate method="POST"> 
+      <div class="col-md-4">
+        <label for="validationCustom01" class="form-label">Enter commentary</label>
+        <input type="text" class="form-control" name="content" id="content" required><?php echo $ContErr;?>
+        <div class="valid-feedback"></div>
+        <br/>
+      </div>
+      <div class="col-12">
+        <button class="btn btn-primary" type="submit" id="submit" value="submit" name="submit">Submit</button>
+      </div>
+    </form>
+    <?php foreach (array_reverse($comments) as $key => $comment){ ?>
+    <div class="alert alert-secondary" role="alert">
+      <p class="content"><?= $comment["content"] ?></p>
+      <small><?= $comment["author"]?></small>
+    </div>
+    <?php } ?>
+  </article>
   <?php include('includes/footer.php') ?>
 </body>
 </html>
